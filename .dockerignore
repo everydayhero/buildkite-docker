@@ -1,2 +1,5 @@
 Makefile
 Dockerfile.template
+bin/download
+bin/generate
+make.sh

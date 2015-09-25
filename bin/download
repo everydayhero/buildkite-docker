@@ -1,0 +1,3 @@
+#!/bin/bash -e
+
+buildkite-agent artifact download "$@" .
