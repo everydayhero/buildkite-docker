@@ -1,6 +1,7 @@
+TAG?=latest
 DOCKERFILE=Dockerfile
 DOCKERFILE_TEMPLATE=Dockerfile.template
-IMAGE_URL=quay.io/everydayhero/buildkite:latest
+IMAGE_URL=quay.io/everydayhero/buildkite:$(TAG)
 
 default:
 	@echo "Generating Dockerfile"
