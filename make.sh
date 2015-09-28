@@ -1,5 +1,5 @@
 IMAGE_URL=quay.io/everydayhero/buildkite
-tag=${$TAG:-latest}
+tag=${TAG:-"latest"}
 
 bin/download id_rsa
 bin/generate Dockerfile.template Dockerfile
