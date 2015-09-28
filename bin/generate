@@ -1,4 +1,4 @@
 #!/bin/bash -e
 
 echo "Generating $2..."
-perl -X -p -i -e 's/\$\{([^}]+)\}/defined $$ENV{$1} ? $ENV{$1} : $&/eg' > $2 < $1
+perl -X -p -i -e 's/\$\{([^}]+)\}/defined $ENV{$1} ? $ENV{$1} : $&/eg' > $2 < $1
