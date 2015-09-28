@@ -4,3 +4,4 @@ bin/download
 bin/generate
 make.sh
 .git*
+.buildkite

@@ -1,0 +1,13 @@
+---
+steps:
+  -
+    name: "Build docker image"
+    command: "/bin/bash -e make.sh"
+    env:
+      TAG: "$BUILDKITE_BRANCH"
+  -
+    type: "waiter"
+  -
+    name: "Tag latest build"
+    command: "docker tag -f quay.io/everydayhero/buildkite:$BUILDKITE_BRANCH quay.io/everydayhero/buildkite:latest && docker push quay.io/everydayhero/buildkite:latest"
+    branches: "master"
