@@ -2,9 +2,7 @@
 steps:
   -
     name: "Build docker image"
-    command: "/bin/bash -e make.sh"
-    env:
-      TAG: "$BUILDKITE_BRANCH"
+    command: "TAG=$BUILDKITE_BRANCH /bin/bash -e make.sh"
   -
     type: "waiter"
   -
