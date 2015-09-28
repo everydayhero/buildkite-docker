@@ -1,0 +1,10 @@
+#!/bin bash -eu
+
+eval $(ssh-agent)
+ssh-add
+
+docker login -e="." -u="$QUAY_USER" -p=$QUAY_PASSWORD quay.io
+
+cd ~/Code/configure && git fetch && git reset --hard origin/master
+cd ~/Code/plain-utils && git fetch && git reset --hard origin/master
+plain-utils update
