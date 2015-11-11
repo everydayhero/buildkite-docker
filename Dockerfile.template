@@ -28,5 +28,8 @@ RUN cat /root/Code/plain-utils/ssh_config.example >> /root/.ssh/config
 RUN echo "Host bastion-* *.plain.edh.ro\n User deployer\n IdentityFile /root/.ssh/id_rsa" >> /root/.ssh/config
 
 ADD hooks /buildkite/hooks/
+ADD https://github.com/docker/compose/releases/download/1.4.2/docker-compose-Linux-x86_64 /usr/local/bin/docker-compose
+
+RUN chmod +x /usr/local/bin/docker-compose
 
 ENV PATH=/root/Code/plain-utils/bin:$PATH
