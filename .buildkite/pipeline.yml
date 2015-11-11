@@ -1,11 +1,16 @@
 ---
 steps:
-  -
-    name: "Build docker image"
+  - name: "Build docker image"
     command: "TAG=$BUILDKITE_BRANCH /bin/bash -e make.sh"
-  -
-    type: "waiter"
-  -
-    name: "Tag latest build"
+
+  - wait
+
+  - name: "Tag latest build"
     command: "docker tag -f quay.io/everydayhero/buildkite:$BUILDKITE_BRANCH quay.io/everydayhero/buildkite:latest && docker push quay.io/everydayhero/buildkite:latest"
+    branches: "master"
+
+  - wait
+
+  - name: "Roll out new agent"
+    command: "plain-utils ansible-playbook staging master -t build build.yml"
     branches: "master"
