@@ -16,7 +16,7 @@ ENV BUILDKITE_S3_ACL=private
 ENV BUILDKITE_AGENT_TOKEN=${BUILDKITE_AGENT_TOKEN}
 ENV BUILDKITE_AGENT_META_DATA=plain_utils=true
 
-RUN mkdir -p /root/.ssh/controlmasters
+RUN mkdir -p /root/.ssh/controlmasters && ln -s /root/.ssh/controlmasters /root/.ssh/cm
 RUN aws s3 cp --recursive s3://${BUILDKITE_SECRETS_S3_PATH}/ /root/.ssh/ && chmod 0600 /root/.ssh/*
 RUN echo "Host github.com\nStrictHostKeyChecking no" >> /root/.ssh/config
 
