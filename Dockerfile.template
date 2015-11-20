@@ -1,4 +1,4 @@
-FROM buildkite/agent:dind-1.7.1
+FROM buildkite/agent:ubuntu
 
 RUN apt-get update && apt-get install -y pssh realpath awscli
 RUN ln -s /usr/bin/parallel-ssh /usr/local/bin/pssh
